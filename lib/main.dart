@@ -1,94 +1,74 @@
 import 'package:flutter/material.dart';
-import 'second_page.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Text Field Example',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'Amiri',
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      builder: (context, child) {
+        return Directionality(textDirection: TextDirection.rtl, child: child!);
+      },
+      home: const HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+// صفحة رئيسية تحتوي على BottomNavigationBar
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController _controller1 = TextEditingController();
-  final TextEditingController _controller2 = TextEditingController();
+class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
 
-  @override
-  void dispose() {
-    _controller1.dispose();
-    _controller2.dispose();
-    super.dispose();
-  }
+
+  final List<Widget> _pages = [
+    const Center(
+      child: Text('الصفحة الرئيسية', style: TextStyle(fontSize: 24)),
+    ),
+    const Center(child: Text('صفحة البحث', style: TextStyle(fontSize: 24))),
+    const Center(child: Text('صفحة الاعدادات', style: TextStyle(fontSize: 24))),
+    const Center(child: Text('صفحة الحساب', style: TextStyle(fontSize: 24))),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('الصفحة الرئيسية')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            // الحقل الأول
-            TextField(
-              controller: _controller1,
-              decoration: const InputDecoration(
-                labelText: 'أدخل النص هنا',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            // الحقل الثاني
-            TextField(
-              controller: _controller2,
-              decoration: const InputDecoration(
-                labelText: 'النص المُنسوخ',
-                border: OutlineInputBorder(),
-              ),
-              readOnly: true,
-            ),
-            const SizedBox(height: 30),
-
-            // زر نسخ النص إلى الحقل الثاني
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _controller2.text = _controller1.text;
-                });
-              },
-              child: const Text('نسخ النص إلى الحقل الثاني'),
-            ),
-            const SizedBox(height: 20),
-
-            // زر الانتقال إلى الصفحة الثانية مع تمرير النص
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SecondPage(text: _controller1.text),
-                  ),
-                );
-              },
-              child: const Text('الانتقال إلى صفحة أخرى'),
-            ),
-          ],
-        ),
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'الرئيسية'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'بحث'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'الإعدادات',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'الحساب',
+          ),
+        ],
       ),
     );
   }
