@@ -6,7 +6,11 @@ plugins {
 }
 
 android {
+<<<<<<< HEAD
     namespace = "com.example.tasbeehtpp"
+=======
+    namespace = "com.example.cv"
+>>>>>>> 7c4d3a53b642750083e1e0d98799e2c4affa6949
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +25,11 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+<<<<<<< HEAD
         applicationId = "com.example.tasbeehtpp"
+=======
+        applicationId = "com.example.cv"
+>>>>>>> 7c4d3a53b642750083e1e0d98799e2c4affa6949
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

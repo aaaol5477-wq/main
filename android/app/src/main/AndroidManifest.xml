@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
+<<<<<<< HEAD
         android:label="tasbeehtpp"
+=======
+        android:label="cv"
+>>>>>>> 7c4d3a53b642750083e1e0d98799e2c4affa6949
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "name": "tasbeehtpp",
     "short_name": "tasbeehtpp",
+=======
+    "name": "cv",
+    "short_name": "cv",
+>>>>>>> 7c4d3a53b642750083e1e0d98799e2c4affa6949
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

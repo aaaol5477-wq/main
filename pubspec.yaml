@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: tasbeehtpp
+=======
+name: cv
+>>>>>>> 7c4d3a53b642750083e1e0d98799e2c4affa6949
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
